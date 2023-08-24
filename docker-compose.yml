@@ -1,0 +1,30 @@
+version: '3.7'
+
+services:
+
+  app:
+    container_name: slapp
+    build: .
+    environment:
+      - VIRTUAL_HOST=slapp.local
+    ports:
+      - '8009:80'
+    volumes:
+      - ./:/var/www/html
+      - ./apache.conf:/etc/apache2/sites-available/000-default.conf
+    links:
+      - db
+
+  db:
+    image: mysql:5.7
+    platform: linux/x86_64
+    volumes:
+      - "./data/db:/var/lib/mysql"
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: slapp_db
+      MYSQL_USER: laravel
+      MYSQL_PASSWORD: laravel
+    ports:
+      - "3302:3306"
