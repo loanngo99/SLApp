@@ -7,6 +7,14 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
+## Run Dockers
+```
+docker compose up -d
+```
+
+### Run build UI
+`npm run dev` or `npm run watch`
+
 ## Build NativePHP Scripts
 
 ### Installation
