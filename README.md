@@ -12,6 +12,9 @@
 docker compose up -d
 ```
 
+### Run build UI
+`npm run dev` or `npm run watch`
+
 ## Build NativePHP Scripts
 
 ### Installation
