@@ -1,9 +1,9 @@
 <?php
 namespace App\Http\Controllers;
 
+use Exception;
 use Illuminate\Http\Request;
 use App\Services\YoutubeService;
-use App\Http\Controllers\Exception;
 
 use function PHPUnit\Framework\throwException;
 
@@ -13,7 +13,7 @@ class VideoController extends Controller
     private $videoService;
 
     public function __construct(
-        private YoutubeService $youtubeVideoService
+        YoutubeService $youtubeVideoService
     ) {
         $this->videoService = $youtubeVideoService;
     }
@@ -21,7 +21,7 @@ class VideoController extends Controller
     public function index()
     {
         try {
-            $videos = $this->videoService->get('videos');
+            $videos = $this->videoService->get('videos', 'part=snippet&id=BFflHDlTeHw&id=zH_SjIezX5I&id=ViBXz_2deCQ');
             dd($videos);
         } catch (Exception $e) {
             throwException($e);

@@ -18,12 +18,17 @@ class YoutubeService implements YoutubeGatewayInterface
         $this->apiKey = env('GG_API_KEY');
     }
 
-    public function get(string $type = Youtube::VIDEO, array $part = [])
+    /**
+     * @param string $type
+     * @param string $query
+     * @return array|mixed
+     */
+    public function get(string $type = Youtube::SEARCH, string $query = '')
     {
         $response = Http::withHeaders([
-            'Authorization' => 'Bearer oauth2-token',
+            'Authorization' => 'Bearer ',
             'Accept'        => 'application/json',
-        ])->get($this->endPoint . $type . '?access_token=oauth2-token&part=snippet&id=BFflHDlTeHw&id=zH_SjIezX5I&id=ViBXz_2deCQ' . '&key=' . $this->apiKey);
+        ])->get($this->endPoint . $type . '?key=' . $this->apiKey . '&' . $query);
         return $response->json();
     }
 }
