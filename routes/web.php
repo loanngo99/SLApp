@@ -18,4 +18,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::group(['prefix' => '/livewire'], function () {
+    Route::get('/counter', function () {
+        return view('counter');
+    });
+});
+
 Route::get('/videos', [VideoController::class, 'index']);
