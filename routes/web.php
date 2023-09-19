@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\VideoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,3 +24,4 @@ Route::group(['prefix' => '/livewire'], function () {
     });
 });
 
+Route::get('/videos', [VideoController::class, 'index']);
