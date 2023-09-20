@@ -3,10 +3,12 @@
 namespace App\Livewire;
 
 use Livewire\Component;
+use App\Services\YoutubeService;
 
 class SearchInput extends Component
 {
     public $count = 0;
+    public $videos;
 
     public function increment()
     {
@@ -15,7 +17,8 @@ class SearchInput extends Component
 
     public function search()
     {
-        $this->count++;
+        $videos = new YoutubeService;
+        $this->videos = $videos->get('videos', 'part=snippet&id=BFflHDlTeHw&id=zH_SjIezX5I&id=ViBXz_2deCQ');
     }
 
     public function render()
